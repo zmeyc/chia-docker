@@ -11,5 +11,5 @@ docker run \
     -p 127.0.0.1:3000:3000/tcp \
     -v "${PWD}/.docker-home":/root \
     "chia:${TAG}" \
-    /bin/sh -c "cd chia-blockchain-gui && npm run-script dev $*"
+    /bin/sh -c "cd chia-blockchain-gui && npm start $*"
 
