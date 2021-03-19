@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -euo pipefail
 
 : "${TAG:?please set to git tag, branch name or commit hash}"
