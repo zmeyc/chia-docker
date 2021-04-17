@@ -3,6 +3,9 @@ FROM ubuntu:20.04
 ARG TAG
 ARG WITH_GUI
 ARG WITH_ELECTRON
+ARG WITH_BUILD_TOOLS
+
+ARG ORG=chia-network
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -21,6 +24,12 @@ RUN apt-get update -y \
     lsb-release \
     sudo \
     tzdata \
+  && if [ "$WITH_BUILD_TOOLS" = "1" ] ; then \
+    apt-get install -y --no-install-recommends \
+      build-essential \
+      cmake \
+      python3-dev \
+    ; fi \
   && if [ "$WITH_ELECTRON" = "1" ] ; then \
     apt-get install -y --no-install-recommends \
       libasound2 \
@@ -34,7 +43,7 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-RUN git clone -b "${TAG}" https://github.com/Chia-Network/chia-blockchain.git .
+RUN git clone -b "${TAG}" "https://github.com/${ORG}/chia-blockchain.git" .
 
 RUN sh install.sh
 

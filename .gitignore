@@ -1,1 +1,3 @@
-.docker-home
+.docker-home-*
+.docker-mnt
+.env
