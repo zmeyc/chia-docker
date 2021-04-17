@@ -9,6 +9,7 @@ export TAG=1.0rc9
 ./docker-build-cli.sh
 ./docker-chia.sh init
 ./docker-chia.sh configure --log-level INFO
+./docker-chia.sh configure --upnp false
 ```
 
 Or:
